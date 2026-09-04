@@ -6,6 +6,8 @@ public class InputStyle01 : MonoBehaviour
 {
     [SerializeField, Header("占位符文本")] private TMP_Text _textPlaceholder;
     private float _posY;
+    [SerializeField, Header("动画持续时间")] private float _duration = 0.1f;
+    [SerializeField, Header("向上移动的距离")] private float _moveDistance = 35f;
 
     private void Start()
     {
@@ -13,10 +15,10 @@ public class InputStyle01 : MonoBehaviour
         TMP_InputField ipt = GetComponent<TMP_InputField>();
 
         // 默认情况下，如果输入框不为空，则占位符文本向上移动
-        if (string.IsNullOrEmpty(ipt.text))
+        if (string.IsNullOrEmpty(ipt.text) == false)
         {
             // DOTween动画，淡入淡出
-            _textPlaceholder.rectTransform.DOAnchorPosY(_posY, 0.1f);
+            _textPlaceholder.rectTransform.DOAnchorPosY(_posY + _moveDistance, _duration);
         }
 
         // 当被选中时，向上移动
@@ -25,7 +27,7 @@ public class InputStyle01 : MonoBehaviour
             if (string.IsNullOrEmpty(ipt.text))
             {
                 // DOTween动画，淡入淡出
-                _textPlaceholder.rectTransform.DOAnchorPosY(_posY + 35, 0.1f);
+                _textPlaceholder.rectTransform.DOAnchorPosY(_posY + _moveDistance, _duration);
             }
         });
 
@@ -35,7 +37,7 @@ public class InputStyle01 : MonoBehaviour
             if (string.IsNullOrEmpty(ipt.text))
             {
                 // DOTween动画，淡入淡出
-                _textPlaceholder.rectTransform.DOAnchorPosY(_posY, 0.1f);
+                _textPlaceholder.rectTransform.DOAnchorPosY(_posY, _duration);
             }
         });
 

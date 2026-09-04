@@ -439,7 +439,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
-  m_TextViewport: {fileID: 0}
+  m_TextViewport: {fileID: 5361617422644272548}
   m_TextComponent: {fileID: 7939476393783817729}
   m_Placeholder: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -512,3 +512,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputStyle01
   _textPlaceholder: {fileID: 4489801667954785348}
+  _duration: 0.1
+  _moveDistance: 35

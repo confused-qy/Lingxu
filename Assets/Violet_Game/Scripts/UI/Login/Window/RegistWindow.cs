@@ -66,6 +66,11 @@ public class RegistWindow : UIBase
         // TODO
         Debug.Log("发送验证码成功");
     }
+
+    public void OnBackBtnClicked()
+    {
+        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.LoginWindow);
+    }
     
 
 }
