@@ -32,3 +32,13 @@
 # YooAsset build output and runtime cache
 /Bundles/
 /yoo/
+
+# Unity scene recovery backups
+/Assets/_Recovery/
+/Assets/_Recovery.meta
+
+# YooAsset generated shader variant reports
+/Assets/MyShaderVariants.json
+/Assets/MyShaderVariants.json.meta
+/Assets/Violet_Game/Shaders/MyShaderVariants.json
+/Assets/Violet_Game/Shaders/MyShaderVariants.json.meta

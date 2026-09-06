@@ -21,6 +21,7 @@ public class Load : MonoBehaviour {
     [SerializeField, Header("播放模式")] private EPlayMode _playMode = EPlayMode.EditorSimulateMode;
     [SerializeField, Header("资源系统地址")] private string defaultHostServer;
     [SerializeField, Header("备用地址")] private string fallbackHostServer;
+    [SerializeField, Header("热更新视图")] private HotUpdateView _hotUpdateView;
 
     private ResourcePackage package;
 
@@ -129,6 +130,7 @@ public class Load : MonoBehaviour {
         // 没有需要下载的资源
         if (downloader.TotalDownloadCount == 0) {
             Debug.Log("没有资源需要下载，直接进入下一步..");
+            _hotUpdateView.RefreshUI(1, "没有资源需要下载，直接进入下一步..");
             yield return InitCode();
             yield break;
         }
@@ -155,6 +157,7 @@ public class Load : MonoBehaviour {
         else {
             // 下载失败
             Debug.Log("下载失败...");
+            _hotUpdateView.RefreshUI(0, "下载失败...");
             yield break;
         }
 
@@ -217,9 +220,12 @@ public class Load : MonoBehaviour {
     // 下载进度回调
     private void OnDownloadProgressCallback(int totalDownloadCount, int currentDownloadCount,
         long totalDownloadBytes, long currentDownloadBytes) {
+        float prgs = currentDownloadBytes * 1.0f / totalDownloadBytes;
 
-        Debug.Log($"文件总数:: {totalDownloadCount} 已下载文件数::{currentDownloadCount} 总大小::{totalDownloadBytes / 1024.0f / 1024} M " +
-           $"  已下载大小::{currentDownloadBytes / 1024}KB");
+        _hotUpdateView.RefreshUI(prgs, $"下载进度: {currentDownloadCount}/{totalDownloadCount} 文件大小: {currentDownloadBytes / 1024 / 1024}MB/{totalDownloadBytes / 1024 / 1024}MB 【{prgs * 100:F2}%】");
+        Debug.Log($"文件总数:: {totalDownloadCount} 已下载文件数::{currentDownloadCount} 总大小::{totalDownloadBytes / 1024.0f / 1024} MB " +
+           $"  已下载大小::{currentDownloadBytes / 1024.0f / 1024} MB");
+
     }
 
     // 下载错误回调

@@ -21,7 +21,7 @@ public class HotUpdateView : MonoBehaviour
         _slider.value = prgs;
         _texProgress.SetText(prgsTex);
 
-        _imgProgress.transform.localPosition = new Vector3(_slideWidth, 0, 0);
+        _imgProgress.rectTransform.anchoredPosition = new Vector3(_slideWidth * prgs, 0, 0);
     }
 
 }
