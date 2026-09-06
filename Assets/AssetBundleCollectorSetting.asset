@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
+  m_Name: AssetBundleCollectorSetting
+  m_EditorClassIdentifier: YooAsset.Editor::YooAsset.Editor.AssetBundleCollectorSetting
+  ShowPackageView: 0
+  EnableAddressable: 0
+  LocationToLower: 0
+  IncludeAssetGUID: 0
+  UniqueBundleName: 0
+  ShowEditorAlias: 0
+  Packages:
+  - PackageName: DefaultPackage
+    PackageDesc: 
+    Groups:
+    - GroupName: Effects
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Effects
+        CollectorGUID: dda633a7b66224479bdea60da772aed2
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Materials
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Materials
+        CollectorGUID: 0cb20b990c9e64dbb9a91cd6453ee471
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Models
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Models
+        CollectorGUID: 3b91b712fd67f42ca88e6a47aaa5a25d
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Prefabs
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Prefabs
+        CollectorGUID: 0aaba54e9c8a64e87ab9a3941b1fb876
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Scenes
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Scenes
+        CollectorGUID: 76b57beecdda747ea89f39dda293adaa
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Shaders
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Shaders
+        CollectorGUID: 1e06a98abfbb14601b88c44e8f806e0a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Textures
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Textures
+        CollectorGUID: 3bd6f8b7ddc0a4a229ee072e210cd4d9
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: UISprites
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/UISprites
+        CollectorGUID: 1e005ab8c64134f568a662e16ab52ecb
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Dlls
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Violet_Game/Dlls
+        CollectorGUID: cfda636660f0143b296b46c031332cda
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

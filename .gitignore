@@ -22,3 +22,13 @@
 *.mdb
 *.opendb
 *.VC.db
+
+# HybridCLR / IL2CPP generated data
+/HybridCLRData/
+/Il2CppOutputProject/
+/Assets/HybridCLRBuildCache/
+/Assets/HybridCLRBuildCache.meta
+
+# YooAsset build output and runtime cache
+/Bundles/
+/yoo/
