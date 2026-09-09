@@ -8,7 +8,7 @@ using UnityEngine.UI;
 * DESCRIPTION: 登录窗口，继承自UIBase，封装了UIBase的生命周期函数
 */
 
-public class LoginWindow : UIBase
+public class LoginWindow : WindowBase
 {
     [SerializeField, Header("账号输入框")]private TMP_InputField _iptAcct;
     [SerializeField, Header("密码输入框")]private TMP_InputField _iptPasd;

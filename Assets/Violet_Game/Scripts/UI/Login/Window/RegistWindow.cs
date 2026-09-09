@@ -6,7 +6,7 @@ using UnityEngine.UI;
 * DESCRIPTION: 注册窗口，继承自UIBase，封装了UIBase的生命周期函数
 */
 
-public class RegistWindow : UIBase
+public class RegistWindow : WindowBase
 {
     [SerializeField, Header("账号输入框")]private TMP_InputField _iptAcct;
     [SerializeField, Header("手机号码输入框")] private TMP_InputField _iptMobile;

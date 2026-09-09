@@ -7,20 +7,29 @@ using UnityEngine;
 
 public class CtrlBase : IDisposable
 {
+    protected UIBase _view; 
     public CtrlBase(UIBase view)
     {
         // 初始化
+        _view = view;
     }
 
-    public virtual void ShowView()
+    public virtual void ShowView(bool isShow = true)
     {
         // 显示视图
+        _view.Show(isShow);
     }
 
-    public virtual void HideView()
+    public virtual void ShowWindow(WindowType windowType)
     {
-        // 隐藏视图
+        // 显示窗口
+        if (!_view.gameObject.activeSelf)
+        {
+            _view.Show(true);
+        }
+        _view.ShowWindow(windowType);
     }
+
 
     public virtual void Dispose()
     {

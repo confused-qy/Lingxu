@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 /**
 * UIBase.cs
 * UI基类
@@ -71,12 +72,37 @@ public class UIBase : MonoBehaviour
     }
     */
 
+    protected Dictionary<WindowType, WindowBase> windowDic;
+
     // 留给子类重写的初始化函数，子类可以在该函数中进行UI的初始化操作
-    public virtual void InitView() { }
-    
+    public virtual void InitView()
+    {
+        windowDic = new Dictionary<WindowType, WindowBase>();
+    }
+
     // 留给子类重写的显示函数，子类可以在该函数中进行UI的显示操作
     public virtual void Show(bool isShow = true)
     {
         gameObject.SetActive(isShow);
+    }
+    
+    public WindowBase GetWindow(WindowType windowType)
+    {
+        return windowDic[windowType];
+    }
+    
+    public void ShowWindow(WindowType windowType)
+    {
+        if (!windowDic.ContainsKey(windowType))
+        {
+            Debug.LogWarning($"Window of type {windowType} does not exist.");
+            return;
+        }
+        // 隐藏所有窗口，显示指定窗口
+        foreach (var item in windowDic)
+        {
+            item.Value.Show(item.Key == windowType);
+        }
+
     }
 }

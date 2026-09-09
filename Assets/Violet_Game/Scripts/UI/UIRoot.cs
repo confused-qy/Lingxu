@@ -11,11 +11,16 @@ using UnityEngine.EventSystems;
 public class UIRoot : MonoBehaviour
 {
     public static UIRoot Instance;
-    public LoginCtrl LoginViewCtrl { get; private set; }
 
     [SerializeField, Header("登录视图")] private LoginView _loginView;
-    [SerializeField, Header("点击特效")] private ParticleSystem _clickFX;
+    public LoginCtrl LoginViewCtrl { get; private set; }
 
+    [SerializeField, Header("创建角色视图")] private CreateRoleView _createRoleView;
+    public CreateRoleCtrl CreateRoleViewCtrl { get; private set; }
+
+    [SerializeField, Header("点击特效")] private ParticleSystem _clickFX;
+    
+    
     private RectTransform _canvasRectTransform;
 
     private void Awake()
@@ -33,8 +38,14 @@ public class UIRoot : MonoBehaviour
 
     private void InitCtrl()
     {
-        if (LoginViewCtrl != null) { return; }
-        LoginViewCtrl = new LoginCtrl(_loginView);
+        if (LoginViewCtrl == null) 
+        {
+            LoginViewCtrl = new LoginCtrl(_loginView);
+        }
+        if (CreateRoleViewCtrl == null) 
+        {
+            CreateRoleViewCtrl = new CreateRoleCtrl(_createRoleView);
+        }
     }
 
     private void Update()

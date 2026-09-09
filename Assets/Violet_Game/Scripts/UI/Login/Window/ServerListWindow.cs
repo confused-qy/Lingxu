@@ -8,7 +8,7 @@ using YooAsset;
 * DESCRIPTION: 服务器列表窗口
 */
 
-public class ServerListWindow : UIBase
+public class ServerListWindow : WindowBase
 {
     [SerializeField, Header("服务器名称")] private TMP_Text _txtServerName;
     [SerializeField, Header("Item父级变换")] private Transform _itemParentTrans;
