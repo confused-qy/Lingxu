@@ -44,12 +44,14 @@ public class LoginWindow : WindowBase
         if (string.IsNullOrEmpty(_iptAcct.text))
         {
             Debug.Log("账号输入框为空");
+            TipsMgr.Instance.ShowSystemTips("账号不能为空...");
             return;
         }
 
         if (string.IsNullOrEmpty(_iptPasd.text))
         {
             Debug.Log("密码输入框为空");
+            TipsMgr.Instance.ShowSystemTips("密码不能为空...");
             return;
         }
 
@@ -57,6 +59,7 @@ public class LoginWindow : WindowBase
         if (!_todAgreement.isOn)
         {
             Debug.Log("请勾选用户协议");
+            TipsMgr.Instance.ShowSystemTips("请阅读并勾选用户协议");
             return;
         }
 

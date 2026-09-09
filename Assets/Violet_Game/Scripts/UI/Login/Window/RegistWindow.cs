@@ -20,30 +20,35 @@ public class RegistWindow : WindowBase
         if (string.IsNullOrEmpty(_iptAcct.text))
         {
             Debug.Log("账号输入框为空");
+            TipsMgr.Instance.ShowSystemTips("账号不能为空...");
             return;
         }
 
         if (string.IsNullOrEmpty(_iptMobile.text))
         {
             Debug.Log("手机号码输入框为空");
+            TipsMgr.Instance.ShowSystemTips("手机号码不能为空...");
             return;
         }
 
         if (string.IsNullOrEmpty(_iptVerify.text))
         {
             Debug.Log("验证码输入框为空");
+            TipsMgr.Instance.ShowSystemTips("验证码不能为空...");
             return;
         }
 
         if (string.IsNullOrEmpty(_iptPasd.text))
         {
             Debug.Log("密码输入框为空");
+            TipsMgr.Instance.ShowSystemTips("密码不能为空...");
             return;
         }
 
         if (string.IsNullOrEmpty(_iptSurePasd.text))
         {
             Debug.Log("确认密码输入框为空");
+            TipsMgr.Instance.ShowSystemTips("确认密码不能为空...");
             return;
         }
 
@@ -51,6 +56,7 @@ public class RegistWindow : WindowBase
         if (_iptPasd.text != _iptSurePasd.text)
         {
             Debug.Log("两次输入的密码不一致");
+            TipsMgr.Instance.ShowSystemTips("两次输入的密码不一致...");
             return;
         }
 
