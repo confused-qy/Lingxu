@@ -1,0 +1,44 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+.vscode/
+.idea/
+.DS_Store
+
+*.csproj
+*.sln
+*.slnx
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# HybridCLR / IL2CPP generated data
+/HybridCLRData/
+/Il2CppOutputProject/
+/Assets/HybridCLRBuildCache/
+/Assets/HybridCLRBuildCache.meta
+
+# YooAsset build output and runtime cache
+/Bundles/
+/yoo/
+
+# Unity scene recovery backups
+/Assets/_Recovery/
+/Assets/_Recovery.meta
+
+# YooAsset generated shader variant reports
+/Assets/MyShaderVariants.json
+/Assets/MyShaderVariants.json.meta
+/Assets/Violet_Game/Shaders/MyShaderVariants.json
+/Assets/Violet_Game/Shaders/MyShaderVariants.json.meta

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/01_Servers/">
+    <Project Path="../01_Servers/CenterServer/CenterServer.csproj" />
+    <Project Path="../01_Servers/LoginServer/LoginServer.csproj" />
+  </Folder>
+  <Folder Name="/02_Library/">
+    <Project Path="02_Library/Network/Network.csproj" />
+  </Folder>
+</Solution>

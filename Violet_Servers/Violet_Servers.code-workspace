@@ -1,0 +1,55 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "dotnet.defaultSolution": "02_Library/Violet_Servers.slnx"
+  },
+  "extensions": {
+    "recommendations": ["ms-dotnettools.csdevkit"]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build CenterServer",
+        "type": "process",
+        "command": "dotnet",
+        "args": ["build", "${workspaceFolder}/01_Servers/CenterServer/CenterServer.csproj"],
+        "problemMatcher": "$msCompile",
+        "group": { "kind": "build", "isDefault": true }
+      },
+      {
+        "label": "build LoginServer",
+        "type": "process",
+        "command": "dotnet",
+        "args": ["build", "${workspaceFolder}/01_Servers/LoginServer/LoginServer.csproj"],
+        "problemMatcher": "$msCompile",
+        "group": "build"
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Violet: CenterServer",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build CenterServer",
+        "program": "${workspaceFolder}/01_Servers/CenterServer/bin/Debug/net10.0/CenterServer.dll",
+        "cwd": "${workspaceFolder}/01_Servers/CenterServer",
+        "console": "integratedTerminal",
+        "stopAtEntry": false
+      },
+      {
+        "name": "Violet: LoginServer",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build LoginServer",
+        "program": "${workspaceFolder}/01_Servers/LoginServer/bin/Debug/net10.0/LoginServer.dll",
+        "cwd": "${workspaceFolder}/01_Servers/LoginServer",
+        "console": "integratedTerminal",
+        "stopAtEntry": false
+      }
+    ]
+  }
+}

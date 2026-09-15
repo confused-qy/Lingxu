@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+enum CmdCode {
+    Succeed = 0; // 请求成功
+    AcctExist = 1; // 账号已存在
+}
+
+message ErrMsg{
+    CmdCode code = 1; // 错误码
+}

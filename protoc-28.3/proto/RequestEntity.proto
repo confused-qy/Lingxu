@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+// 生成的 C# 类会放进这个命名空间。
+// Unity 脚本里写 using Protocol; 就能用到下面这些类。
+option csharp_namespace = "Protocol";
+
+// 客户端发给服务器的请求
+// 注意：= 后面的数字是「字段编号」，不是默认值。编号一旦用过就不要改、不要复用。
+message BasePackage {
+  int32 proto_code = 1; // 协议编号
+
+  bytes data = 10; // 请求数据
+}
+
+message RegistReq {
+  string user_name = 1; // 用户名
+  string phone_num = 2;
+  string password = 3; // 密码
+}
