@@ -6,18 +6,25 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        NetClient client = new NetClient("127.0.0.1", 10110, ClientType.LoginServer);
+    {   
+        NetClient client = new NetClient(NetDefine.IPHost, NetDefine.CenterServerPort, ClientType.LoginServer);
         client.StartConnect();
 
-        new Timer(_ =>
-        {
-            BasePackage basePackage = new BasePackage()
-            {
-                ProtoCode = 100
-            };
-            client.SendData(basePackage);
-        }, null, 5000, Timeout.Infinite);
+        NetServer server = new NetServer(client);
+        server.StartServer(NetDefine.IPHost, NetDefine.LoginServerPort);
+
+        LoginCtrl loginCtrl = new LoginCtrl();
+        server.RegistCommand(NetDefine.CMD_RegistCode, loginCtrl);
+
+        client.RegistCommand(NetDefine.CMD_RegistCode, loginCtrl);
+
+        // new Timer(_ =>
+        // {
+        //     BasePackage basePackage = new BasePackage()
+        //     {
+        //     };
+        //     client.SendData(basePackage);
+        // }, null, 5000, Timeout.Infinite);
 
         while (true)
         {

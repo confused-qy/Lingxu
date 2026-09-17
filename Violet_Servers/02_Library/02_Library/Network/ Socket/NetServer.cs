@@ -8,6 +8,14 @@ public class NetServer
 {
     private Socket _socket;
     private Dictionary<int, IContainer> _cmdDic = new Dictionary<int, IContainer>();
+
+    private NetClient _client;
+
+    public NetServer(NetClient client)
+    {
+        _client = client;
+    }
+
     public void StartServer(string ip, int port)
     {
         // 三个参数分别是：
@@ -43,10 +51,11 @@ public class NetServer
         try
         {
             Socket clientSocket = _socket.EndAccept(ar);
+            LogMsg.Info("Client connected: " + clientSocket.RemoteEndPoint);
 
             // 开始接收客户端发送的数据
             // 使用 Session 类来处理客户端发送的数据
-            Session session = new Session(_cmdDic);
+            Session session = new Session(_cmdDic, _client);
             session.ReceiveData(clientSocket);
 
             // 继续监听新的连接请求

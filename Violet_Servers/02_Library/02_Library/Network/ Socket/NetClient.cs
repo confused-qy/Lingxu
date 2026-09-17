@@ -12,7 +12,7 @@ public class NetClient : ServerBase
     private string _host;
     private int _port;
     Timer _reconnectTimer;
-    private bool _isNeedReconnect = true;
+    public bool _isNeedReconnect = true;
 
     public NetClient(string ip, int port, ClientType clientType)
     {
@@ -25,44 +25,49 @@ public class NetClient : ServerBase
     // 链接服务端
     public void StartConnect()
     {
-        try
+        lock (_connectionLock)
         {
             if (_connState != ConnState.Disconnected)
-            {
                 return;
-            }
-            if (_socket == null)
+
+            try
             {
                 _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _buffer = new byte[1024 * 4];
+                _connState = ConnState.Connecting;
+                // 回调保留本次连接，避免旧回调操作新连接。
+                _socket.BeginConnect(_host, _port, OnConnectCB, _socket);
             }
-
-            // 开始连接
-            _socket.BeginConnect(_host, _port, OnConnectCB, null);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("StartConnect error: " + ex.Message);
-            Disconnect();
+            catch (Exception ex)
+            {
+                Console.WriteLine("StartConnect error: " + ex.Message);
+                Disconnect();
+            }
         }
     }
 
-    // 连接回调
     private void OnConnectCB(IAsyncResult ar)
     {
-        try
+        Socket connectingSocket = (Socket)ar.AsyncState;
+        lock (_connectionLock)
         {
-            _socket.EndConnect(ar);
-            _connState = ConnState.Connected;
-
-            // 开始接收数据
-            BeginReceive();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("OnConnectCB error: " + ex.Message);
-            _connState = ConnState.Disconnected;
-            if (_socket != null)
+            try
             {
+                connectingSocket.EndConnect(ar);
+                if (!ReferenceEquals(connectingSocket, _socket))
+                    return;
+
+                _connState = ConnState.Connected;
+                _reconnectTimer?.Dispose();
+                _reconnectTimer = null;
+                BeginReceive();
+            }
+            catch (Exception ex)
+            {
+                if (!ReferenceEquals(connectingSocket, _socket))
+                    return;
+
+                Console.WriteLine("OnConnectCB error: " + ex.Message);
                 Disconnect();
             }
         }
@@ -85,8 +90,7 @@ public class NetClient : ServerBase
             return;
         }
 
-        IContainer container = _cmdDic[basePackage.ProtoCode];
-        if (container == null)
+        if (!_cmdDic.TryGetValue(basePackage.ProtoCode, out IContainer container) || container == null)
         {
             LogMsg.Info($"No container found for proto code: {basePackage.ProtoCode}");
             return;
@@ -94,39 +98,27 @@ public class NetClient : ServerBase
         container.OnClientCommand(this, basePackage);
     }
 
-    // 断开连接并设置重连定时器
-    protected override void Disconnect()
+    // 先清理旧连接，再安排重连；连接状态与Socket由同一把锁保护。
+    public override void Disconnect()
     {
-        _connState = ConnState.Disconnected;
-        SetReconnectTimer();
-
-        base.Disconnect();
-    }
-
-    // 停止重连定时器
-    private void SetReconnectTimer()
-    {
-        // 设置重连定时器的逻辑
-        if (_reconnectTimer == null)
+        lock (_connectionLock)
         {
-            _reconnectTimer = new Timer((state) =>
+            base.Disconnect();
+            _reconnectTimer?.Dispose();
+            _reconnectTimer = null;
+            if (_isNeedReconnect)
             {
-                if (_isNeedReconnect && _connState == ConnState.Disconnected)
-                {
-                    StartConnect();
-                }
-            }, null, 0, 3000); // 每3秒尝试重连一次
+                _reconnectTimer = new Timer(Reconnect, null, 3000, Timeout.Infinite);
+            }
         }
-
     }
 
-    // 尝试重新连接
-    private void ReConn()
+    private void Reconnect(object state)
     {
-        if (_isNeedReconnect)
+        lock (_connectionLock)
         {
-            StartConnect();
+            if (_isNeedReconnect && _connState == ConnState.Disconnected)
+                StartConnect();
         }
     }
-
 }

@@ -8,9 +8,13 @@ using System.Collections.Generic;
 
 public class Session : ServerBase
 {
-    public Session(Dictionary<int, IContainer> cmdDic)
+    public int SessionId { get; set; }
+
+    public Session(Dictionary<int, IContainer> cmdDic, NetClient client)
     {
         _cmdDic = cmdDic;
+        _client = client;
+        SessionMgr.Instance.AddSession(this);
     }
 
     public void ReceiveData(Socket socket)
@@ -23,12 +27,25 @@ public class Session : ServerBase
 
     protected override void HandleCommand(BasePackage basePackage)
     {
-        IContainer container = _cmdDic[basePackage.ProtoCode];
-        if (container == null)
+        if (!_cmdDic.TryGetValue(basePackage.ProtoCode, out IContainer container) || container == null)
         {
             LogMsg.Info($"No container found for proto code: {basePackage.ProtoCode}");
             return;
         }
+        if (_client != null)
+        {
+            if (_client._clientType == ClientType.LoginServer)
+            {
+                basePackage.UnitySessionId = SessionId;
+            }
+        }
         container.OnServerCommand(this, basePackage);
+    }
+
+    public override void Disconnect()
+    {
+        LogMsg.Info($"Session disconnected: {_socket?.RemoteEndPoint}");
+        SessionMgr.Instance.RemoveSession(SessionId);
+        base.Disconnect();
     }
 }

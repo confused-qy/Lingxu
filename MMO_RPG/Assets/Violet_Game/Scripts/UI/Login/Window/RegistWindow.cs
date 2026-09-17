@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Protocol;
+using Google.Protobuf;
 /**
 * 注册窗口
 * DESCRIPTION: 注册窗口，继承自UIBase，封装了UIBase的生命周期函数
@@ -62,8 +64,17 @@ public class RegistWindow : WindowBase
 
         // 3. 开始注册
         // TODO
-        Debug.Log("注册成功");
-        Show(false);
+        // Debug.Log("注册成功");
+        // Show(false);
+
+        RegistReq req = new RegistReq
+        {
+            UserName = _iptAcct.text,
+            PhoneNum = _iptMobile.text,
+            Password = _iptPasd.text
+        };
+        
+        NetSocketMgr.Client.SendData(NetDefine.CMD_RegistCode, req.ToByteString());
 
     }
 

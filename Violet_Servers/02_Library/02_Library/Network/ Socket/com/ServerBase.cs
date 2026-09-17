@@ -7,76 +7,95 @@ using System.Collections.Generic;
 
 public class ServerBase
 {
-    protected ClientType _clientType; // 客户端类型
+    protected readonly object _connectionLock = new object();
+    public ClientType _clientType; // 客户端类型
     public Action<int, ByteString> OnReceiveMsg; // 回调函数，当接收到消息时被调用
     protected Dictionary<int, IContainer> _cmdDic = new Dictionary<int, IContainer>();
     protected byte[] _buffer = new byte[1024 * 4];
     protected Socket _socket;
     protected ConnState _connState;
 
+    public NetClient _client;
+
     protected void BeginReceive()
     {
-        _socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnReceiveCB, null);
+        _socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnReceiveCB, _socket);
     }
 
     // 回调函数，当接收到数据时被调用
     private void OnReceiveCB(IAsyncResult ar)
     {
-        try
+        Socket receivingSocket = (Socket)ar.AsyncState;
+        lock (_connectionLock)
         {
-            Console.WriteLine("OnReceiveCB called");
-            // 结束接收，获取接收到的数据长度
-            int len = _socket.EndReceive(ar);
-            if (len > 0)
+            try
             {
-                while (true)
+                // EndReceive必须使用发起接收时的Socket。
+                int len = receivingSocket.EndReceive(ar);
+                if (!ReferenceEquals(receivingSocket, _socket))
+                    return;
+                Console.WriteLine("OnReceiveCB called");
+                // 结束接收，获取接收到的数据长度
+                if (len > 0)
                 {
-                    ushort msgLen = BitConverter.ToUInt16(_buffer, 0); // 无符号16位整数，表示消息长度
-                    if (len >= msgLen + 2)
+                    while (true)
                     {
-                        // 拿到了完整的数据
-                        byte[] data = NetUtils.Instance.ParseData(_buffer, msgLen);
-
-                        if (data != null)
+                        ushort msgLen = BitConverter.ToUInt16(_buffer, 0); // 无符号16位整数，表示消息长度
+                        if (len >= msgLen + 2)
                         {
-                            BasePackage basePackage = BasePackage.Parser.ParseFrom(data);
-                            Console.WriteLine("Received proto_code: " + basePackage.ProtoCode);
-                            HandleCommand(basePackage);
+                            // 拿到了完整的数据
+                            byte[] data = NetUtils.Instance.ParseData(_buffer, msgLen);
+
+                            if (data != null)
+                            {
+                                BasePackage basePackage = BasePackage.Parser.ParseFrom(data);
+                                Console.WriteLine("Received proto_code: " + basePackage.ProtoCode);
+                                HandleCommand(basePackage);
+                            }
+                            len -= (msgLen + 2);
+
+                            // 发生了沾包
+                            if (len > 0)
+                            {
+                                Buffer.BlockCopy(_buffer, msgLen + 2, _buffer, 0, len);
+                            }
                         }
-                        len -= (msgLen + 2);
-
-                        // 发生了沾包
-                        if (len > 0)
+                        else
                         {
-                            Buffer.BlockCopy(_buffer, msgLen + 2, _buffer, 0, len);
+                            break;
                         }
                     }
-                    else
-                    {
-                        break;
-                    }
+
+                    // 继续接收数据
+                    if (ReferenceEquals(receivingSocket, _socket))
+                        BeginReceive();
+                } else
+                {
+                    Disconnect();
                 }
-
-                // 继续接收数据
-                BeginReceive();
             }
-        }
-        catch (Exception ex)
-        {
-            Disconnect();
-            Console.WriteLine("OnReceiveCB error: " + ex.Message);
-            return;
+            catch (Exception ex)
+            {
+                if (!ReferenceEquals(receivingSocket, _socket))
+                    return;
+                Disconnect();
+                Console.WriteLine("OnReceiveCB error: " + ex.Message);
+                return;
+            }
         }
     }
 
     protected virtual void HandleCommand(BasePackage basePackage) { }
 
-    protected virtual void Disconnect()
+    public virtual void Disconnect()
     {
-        _connState = ConnState.Disconnected;
-         
-        _socket?.Close();
-        _socket = null;
+        lock (_connectionLock)
+        {
+            _connState = ConnState.Disconnected;
+            Socket socket = _socket;
+            _socket = null;
+            socket?.Close();
+        }
     }
 
     public void SendData(BasePackage basePackage, int protoCode = -1, ByteString data = null)

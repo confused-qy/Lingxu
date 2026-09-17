@@ -4,6 +4,13 @@ using Google.Protobuf;
 // 中心服务器与登录服务器的控制器
 public class Center_LoginCtrl : IContainer
 {
+    private LoginModel _loginModel;
+
+    public Center_LoginCtrl(LoginModel loginModel)
+    {
+        _loginModel = loginModel;
+    }
+
     public void OnClientCommand(ServerBase serverBase, BasePackage basePackage)
     {
         // 处理来自登录服务器的命令
@@ -33,6 +40,9 @@ public class Center_LoginCtrl : IContainer
     {
         // 处理注册命令的具体逻辑
         RegistReq registReq = RegistReq.Parser.ParseFrom(basePackage.Data);
-        LogMsg.Info($"Received registration request: user_name={registReq.UserName}, phone_num={registReq.PhoneNum}");
+        LogMsg.Info($"Received registration request: " + registReq.ToString());
+        RegistRet registRet = _loginModel.RegistAccount(registReq);
+        LogMsg.Info($"Registration result: " + registRet.ToString());
+        serverBase.SendData(basePackage, basePackage.ProtoCode, registRet.ToByteString());
     }
 }

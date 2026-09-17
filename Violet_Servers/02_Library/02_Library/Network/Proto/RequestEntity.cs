@@ -24,14 +24,15 @@ namespace Protocol {
     static RequestEntityReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNSZXF1ZXN0RW50aXR5LnByb3RvIi8KC0Jhc2VQYWNrYWdlEhIKCnByb3Rv",
-            "X2NvZGUYASABKAUSDAoEZGF0YRgKIAEoDCJDCglSZWdpc3RSZXESEQoJdXNl",
-            "cl9uYW1lGAEgASgJEhEKCXBob25lX251bRgCIAEoCRIQCghwYXNzd29yZBgD",
-            "IAEoCUILqgIIUHJvdG9jb2xiBnByb3RvMw=="));
+            "ChNSZXF1ZXN0RW50aXR5LnByb3RvIkkKC0Jhc2VQYWNrYWdlEhIKCnByb3Rv",
+            "X2NvZGUYASABKAUSGAoQdW5pdHlfc2Vzc2lvbl9pZBgCIAEoBRIMCgRkYXRh",
+            "GAogASgMIkMKCVJlZ2lzdFJlcRIRCgl1c2VyX25hbWUYASABKAkSEQoJcGhv",
+            "bmVfbnVtGAIgASgJEhAKCHBhc3N3b3JkGAMgASgJQguqAghQcm90b2NvbGIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.BasePackage), global::Protocol.BasePackage.Parser, new[]{ "ProtoCode", "Data" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.BasePackage), global::Protocol.BasePackage.Parser, new[]{ "ProtoCode", "UnitySessionId", "Data" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RegistReq), global::Protocol.RegistReq.Parser, new[]{ "UserName", "PhoneNum", "Password" }, null, null, null, null)
           }));
     }
@@ -79,6 +80,7 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BasePackage(BasePackage other) : this() {
       protoCode_ = other.protoCode_;
+      unitySessionId_ = other.unitySessionId_;
       data_ = other.data_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -101,6 +103,21 @@ namespace Protocol {
       get { return protoCode_; }
       set {
         protoCode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unity_session_id" field.</summary>
+    public const int UnitySessionIdFieldNumber = 2;
+    private int unitySessionId_;
+    /// <summary>
+    /// 会话ID
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UnitySessionId {
+      get { return unitySessionId_; }
+      set {
+        unitySessionId_ = value;
       }
     }
 
@@ -135,6 +152,7 @@ namespace Protocol {
         return true;
       }
       if (ProtoCode != other.ProtoCode) return false;
+      if (UnitySessionId != other.UnitySessionId) return false;
       if (Data != other.Data) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -144,6 +162,7 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (ProtoCode != 0) hash ^= ProtoCode.GetHashCode();
+      if (UnitySessionId != 0) hash ^= UnitySessionId.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,6 +186,10 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteInt32(ProtoCode);
       }
+      if (UnitySessionId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UnitySessionId);
+      }
       if (Data.Length != 0) {
         output.WriteRawTag(82);
         output.WriteBytes(Data);
@@ -185,6 +208,10 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteInt32(ProtoCode);
       }
+      if (UnitySessionId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UnitySessionId);
+      }
       if (Data.Length != 0) {
         output.WriteRawTag(82);
         output.WriteBytes(Data);
@@ -201,6 +228,9 @@ namespace Protocol {
       int size = 0;
       if (ProtoCode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ProtoCode);
+      }
+      if (UnitySessionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UnitySessionId);
       }
       if (Data.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
@@ -219,6 +249,9 @@ namespace Protocol {
       }
       if (other.ProtoCode != 0) {
         ProtoCode = other.ProtoCode;
+      }
+      if (other.UnitySessionId != 0) {
+        UnitySessionId = other.UnitySessionId;
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
@@ -246,6 +279,10 @@ namespace Protocol {
             ProtoCode = input.ReadInt32();
             break;
           }
+          case 16: {
+            UnitySessionId = input.ReadInt32();
+            break;
+          }
           case 82: {
             Data = input.ReadBytes();
             break;
@@ -271,6 +308,10 @@ namespace Protocol {
             break;
           case 8: {
             ProtoCode = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            UnitySessionId = input.ReadInt32();
             break;
           }
           case 82: {

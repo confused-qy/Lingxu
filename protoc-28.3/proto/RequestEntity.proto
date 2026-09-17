@@ -8,6 +8,7 @@ option csharp_namespace = "Protocol";
 // 注意：= 后面的数字是「字段编号」，不是默认值。编号一旦用过就不要改、不要复用。
 message BasePackage {
   int32 proto_code = 1; // 协议编号
+  int32 unity_session_id = 2; // 会话ID
 
   bytes data = 10; // 请求数据
 }
