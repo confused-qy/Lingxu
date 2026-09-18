@@ -8,6 +8,8 @@ public class NetDefine
     public const ushort CMD_ErrCode = 10001; // 错误码
 
     public const ushort CMD_RegistCode = 11010; // 注册码
+
+    public const ushort CMD_LoginCode = 11020; // 登录码
 }
 
 public enum ConnState

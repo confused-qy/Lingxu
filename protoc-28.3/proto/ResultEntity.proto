@@ -4,6 +4,9 @@ enum CmdCode {
     Succeed = 0; // 请求成功
     AcctExist = 1; // 账号已存在
     ServerError = 2; // 服务器错误
+    AcctNotExist = 3; // 账号不存在
+    PasswordError = 4; // 密码错误
+    AcctDisable = 5; // 账号被禁用
 }
 
 message ErrMsg{
@@ -12,4 +15,10 @@ message ErrMsg{
 
 message RegistRet {
     CmdCode cmd_code = 1; // 表示注册结果的状态码
+}
+
+message LoginRet {
+    CmdCode cmd_code = 1; // 表示登录结果的状态码
+    int32 last_login_server_id = 2; // 上次登录的服务器ID
+    int32 account_id = 3; // 账号ID
 }

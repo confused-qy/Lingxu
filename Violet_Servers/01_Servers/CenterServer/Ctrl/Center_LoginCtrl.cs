@@ -25,6 +25,10 @@ public class Center_LoginCtrl : IContainer
                 // 处理注册命令
                 OnRegistHandle(serverBase, basePackage);
                 break;
+            case NetDefine.CMD_LoginCode:
+                // 处理登录命令
+                OnLoginHandle(serverBase, basePackage);
+                break;
             default:
                 // 处理其他命令
                 break;
@@ -44,5 +48,15 @@ public class Center_LoginCtrl : IContainer
         RegistRet registRet = _loginModel.RegistAccount(registReq);
         LogMsg.Info($"Registration result: " + registRet.ToString());
         serverBase.SendData(basePackage, basePackage.ProtoCode, registRet.ToByteString());
+    }
+
+    private void OnLoginHandle(ServerBase serverBase, BasePackage basePackage)
+    {
+        // 处理登录命令的具体逻辑
+        LoginReq loginReq = LoginReq.Parser.ParseFrom(basePackage.Data);
+        LogMsg.Info($"Received login request: " + loginReq.ToString());
+        LoginRet loginRet = _loginModel.LoginAccount(loginReq);
+        LogMsg.Info($"Login result: " + loginRet.ToString());
+        serverBase.SendData(basePackage, basePackage.ProtoCode, loginRet.ToByteString());
     }
 }

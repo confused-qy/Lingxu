@@ -10,7 +10,7 @@ internal class AccountTable
 
     // 用户状态
     [SugarColumn(DefaultValue = "1", IsOnlyIgnoreInsert = false)]
-    public byte State { get; set; }
+    public byte State { get; set; } = 1;
 
     // 用户名
     [SugarColumn(Length = 30, IsNullable = false)]

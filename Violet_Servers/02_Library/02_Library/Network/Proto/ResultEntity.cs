@@ -24,13 +24,17 @@ public static partial class ResultEntityReflection {
         string.Concat(
           "ChJSZXN1bHRFbnRpdHkucHJvdG8iIAoGRXJyTXNnEhYKBGNvZGUYASABKA4y",
           "CC5DbWRDb2RlIicKCVJlZ2lzdFJldBIaCghjbWRfY29kZRgBIAEoDjIILkNt",
-          "ZENvZGUqNgoHQ21kQ29kZRILCgdTdWNjZWVkEAASDQoJQWNjdEV4aXN0EAES",
-          "DwoLU2VydmVyRXJyb3IQAmIGcHJvdG8z"));
+          "ZENvZGUiWAoITG9naW5SZXQSGgoIY21kX2NvZGUYASABKA4yCC5DbWRDb2Rl",
+          "EhwKFGxhc3RfbG9naW5fc2VydmVyX2lkGAIgASgFEhIKCmFjY291bnRfaWQY",
+          "AyABKAUqbAoHQ21kQ29kZRILCgdTdWNjZWVkEAASDQoJQWNjdEV4aXN0EAES",
+          "DwoLU2VydmVyRXJyb3IQAhIQCgxBY2N0Tm90RXhpc3QQAxIRCg1QYXNzd29y",
+          "ZEVycm9yEAQSDwoLQWNjdERpc2FibGUQBWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CmdCode), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::ErrMsg), global::ErrMsg.Parser, new[]{ "Code" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::RegistRet), global::RegistRet.Parser, new[]{ "CmdCode" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::RegistRet), global::RegistRet.Parser, new[]{ "CmdCode" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginRet), global::LoginRet.Parser, new[]{ "CmdCode", "LastLoginServerId", "AccountId" }, null, null, null, null)
         }));
   }
   #endregion
@@ -50,6 +54,18 @@ public enum CmdCode {
   /// 服务器错误
   /// </summary>
   [pbr::OriginalName("ServerError")] ServerError = 2,
+  /// <summary>
+  /// 账号不存在
+  /// </summary>
+  [pbr::OriginalName("AcctNotExist")] AcctNotExist = 3,
+  /// <summary>
+  /// 密码错误
+  /// </summary>
+  [pbr::OriginalName("PasswordError")] PasswordError = 4,
+  /// <summary>
+  /// 账号被禁用
+  /// </summary>
+  [pbr::OriginalName("AcctDisable")] AcctDisable = 5,
 }
 
 #endregion
@@ -448,6 +464,287 @@ public sealed partial class RegistRet : pb::IMessage<RegistRet>
           break;
         case 8: {
           CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class LoginRet : pb::IMessage<LoginRet>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<LoginRet> _parser = new pb::MessageParser<LoginRet>(() => new LoginRet());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<LoginRet> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ResultEntityReflection.Descriptor.MessageTypes[2]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginRet() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginRet(LoginRet other) : this() {
+    cmdCode_ = other.cmdCode_;
+    lastLoginServerId_ = other.lastLoginServerId_;
+    accountId_ = other.accountId_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginRet Clone() {
+    return new LoginRet(this);
+  }
+
+  /// <summary>Field number for the "cmd_code" field.</summary>
+  public const int CmdCodeFieldNumber = 1;
+  private global::CmdCode cmdCode_ = global::CmdCode.Succeed;
+  /// <summary>
+  /// 表示登录结果的状态码
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::CmdCode CmdCode {
+    get { return cmdCode_; }
+    set {
+      cmdCode_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "last_login_server_id" field.</summary>
+  public const int LastLoginServerIdFieldNumber = 2;
+  private int lastLoginServerId_;
+  /// <summary>
+  /// 上次登录的服务器ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int LastLoginServerId {
+    get { return lastLoginServerId_; }
+    set {
+      lastLoginServerId_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "account_id" field.</summary>
+  public const int AccountIdFieldNumber = 3;
+  private int accountId_;
+  /// <summary>
+  /// 账号ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int AccountId {
+    get { return accountId_; }
+    set {
+      accountId_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as LoginRet);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(LoginRet other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (CmdCode != other.CmdCode) return false;
+    if (LastLoginServerId != other.LastLoginServerId) return false;
+    if (AccountId != other.AccountId) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (CmdCode != global::CmdCode.Succeed) hash ^= CmdCode.GetHashCode();
+    if (LastLoginServerId != 0) hash ^= LastLoginServerId.GetHashCode();
+    if (AccountId != 0) hash ^= AccountId.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (LastLoginServerId != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(LastLoginServerId);
+    }
+    if (AccountId != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(AccountId);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (LastLoginServerId != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(LastLoginServerId);
+    }
+    if (AccountId != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(AccountId);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (CmdCode != global::CmdCode.Succeed) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdCode);
+    }
+    if (LastLoginServerId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(LastLoginServerId);
+    }
+    if (AccountId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(AccountId);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(LoginRet other) {
+    if (other == null) {
+      return;
+    }
+    if (other.CmdCode != global::CmdCode.Succeed) {
+      CmdCode = other.CmdCode;
+    }
+    if (other.LastLoginServerId != 0) {
+      LastLoginServerId = other.LastLoginServerId;
+    }
+    if (other.AccountId != 0) {
+      AccountId = other.AccountId;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          LastLoginServerId = input.ReadInt32();
+          break;
+        }
+        case 24: {
+          AccountId = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          LastLoginServerId = input.ReadInt32();
+          break;
+        }
+        case 24: {
+          AccountId = input.ReadInt32();
           break;
         }
       }

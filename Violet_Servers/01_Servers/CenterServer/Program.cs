@@ -13,6 +13,7 @@ class Program
         SqlSugarClient db = DBMgr.Instance.InitDB();
         Center_LoginCtrl centerLoginCtrl = new Center_LoginCtrl(new LoginModel(db));
         server.RegistCommand(NetDefine.CMD_RegistCode, centerLoginCtrl);
+        server.RegistCommand(NetDefine.CMD_LoginCode, centerLoginCtrl);
 
         while (true)
         {

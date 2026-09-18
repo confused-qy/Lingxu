@@ -18,3 +18,8 @@ message RegistReq {
   string phone_num = 2;
   string password = 3; // 密码
 }
+
+message LoginReq {
+  string user_name = 1; // 用户名
+  string password = 2; // 密码
+}

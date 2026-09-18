@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Protocol;
+using Google.Protobuf;
 
 /**
 * LoginWindow.cs
@@ -78,8 +80,12 @@ public class LoginWindow : WindowBase
         // PlayerPrefs: Unity提供的一个简单的本地存储系统，可以用来保存一些简单的数据，比如玩家的设置，游戏进度等。它会将数据保存在本地的注册表或者配置文件中，数据类型包括int、float、string等。
 
         // 4. 服务器验证，只有服务器验证通过了才可以登录
-        // TODO
-        Debug.Log("登录成功");
-        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.GameServerWindow);
+        LoginReq req = new LoginReq()
+        {
+            UserName = _iptAcct.text,
+            Password = _iptPasd.text
+        };
+
+        NetSocketMgr.Client.SendData(NetDefine.CMD_LoginCode, req.ToByteString());
     }
 }

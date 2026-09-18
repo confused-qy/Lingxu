@@ -10,6 +10,41 @@ public class LoginModel
     {
         _db = client; // 获取数据库客户端实例
     }
+
+    // 处理登录请求的方法
+    internal LoginRet LoginAccount(LoginReq loginReq)
+    {
+        LoginRet ret = new LoginRet();
+        AccountTable accountTable = _db.Queryable<AccountTable>()
+           .Where(a => a.UserName == loginReq.UserName).First();
+        if (accountTable == null)
+        {
+            ret.CmdCode = CmdCode.AcctNotExist; // 同时设置登录返回的命令码
+        }
+        else
+        {
+            if (accountTable.Password != loginReq.Password)
+            {
+                ret.CmdCode = CmdCode.PasswordError; // 同时设置登录返回的命令码
+            }
+            else
+            {
+                if (accountTable.State != 1)
+                {
+                    ret.CmdCode = CmdCode.AcctDisable; // 同时设置登录返回的命令码
+                }
+                else
+                {
+                    // todo：判断账号是否已经登陆
+
+                    // 设置登录成功的返回信息
+                    ret.LastLoginServerId = accountTable.LastLoginServerId;
+                    ret.AccountId = accountTable.Id;
+                }
+            }
+        }
+        return ret;
+    }
     
     internal RegistRet RegistAccount(RegistReq registReq)
     {
