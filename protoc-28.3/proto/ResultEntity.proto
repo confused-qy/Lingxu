@@ -22,3 +22,17 @@ message LoginRet {
     int32 last_login_server_id = 2; // 上次登录的服务器ID
     int32 account_id = 3; // 账号ID
 }
+
+message GameServer {
+    int32 server_id = 1; // 服务器ID
+    string server_name = 2; // 服务器名称
+    int32 run_state = 3; // 运行状态
+    int32 is_new = 4; // 是否为新服
+    string ip_host = 5; // IP 地址
+    int32 port = 6; // 端口
+} 
+
+message GateServerListRet {
+    CmdCode cmd_code = 1; // 表示获取网关服务器列表结果的状态码
+    repeated GameServer game_servers = 2; // 网关服务器列表
+}

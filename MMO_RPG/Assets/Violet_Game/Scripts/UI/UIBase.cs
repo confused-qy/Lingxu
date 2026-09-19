@@ -91,7 +91,7 @@ public class UIBase : MonoBehaviour
         return windowDic[windowType];
     }
     
-    public void ShowWindow(WindowType windowType)
+    public void ShowWindow(WindowType windowType, object obj = null)
     {
         if (!windowDic.ContainsKey(windowType))
         {
@@ -101,7 +101,7 @@ public class UIBase : MonoBehaviour
         // 隐藏所有窗口，显示指定窗口
         foreach (var item in windowDic)
         {
-            item.Value.Show(item.Key == windowType);
+            item.Value.Show(item.Key == windowType, obj);
         }
 
     }

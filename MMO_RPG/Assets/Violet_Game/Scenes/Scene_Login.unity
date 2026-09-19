@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97244839c71064f36a41fddddd9e4cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServerListWindow
-  _txtServerName: {fileID: 0}
+  _txtServerName: {fileID: 1533630660}
   _itemParentTrans: {fileID: 15778743}
 --- !u!1 &623679260
 GameObject:

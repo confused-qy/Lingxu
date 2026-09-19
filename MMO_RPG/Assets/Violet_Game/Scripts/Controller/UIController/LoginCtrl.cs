@@ -20,6 +20,7 @@ public class LoginCtrl : CtrlBase
     {
         SocketDispatcher.Instance.AddEventHandler(NetDefine.CMD_RegistCode, OnRegistHandle);
         SocketDispatcher.Instance.AddEventHandler(NetDefine.CMD_LoginCode, OnLoginHandle);
+        SocketDispatcher.Instance.AddEventHandler(NetDefine.CMD_GetServerListCode, OnGetServerListHandle);
     }
 
     // 处理注册响应
@@ -55,6 +56,24 @@ public class LoginCtrl : CtrlBase
         {
             Debug.Log("Login failed." + ret.ToString());
             TipsMgr.Instance.ShowSystemTips("登录失败...请重试！");
+        }
+    }
+
+    // 处理获取服务器列表响应
+    private void OnGetServerListHandle(ByteString data)
+    {
+        GateServerListRet ret = GateServerListRet.Parser.ParseFrom(data);
+
+        if (ret != null && ret.CmdCode == CmdCode.Succeed)
+        {
+            Debug.Log("Get server list succeeded.");
+            
+            ShowWindow(WindowType.ServerListWindow, ret);
+        }
+        else
+        {
+            Debug.Log("Get server list failed." + ret.ToString());
+            TipsMgr.Instance.ShowSystemTips("获取服务器列表失败...请重试！");
         }
     }
 

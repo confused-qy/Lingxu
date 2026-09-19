@@ -9,7 +9,7 @@ internal class AccountTable
     public int Id { get; set; }
 
     // 用户状态
-    [SugarColumn(DefaultValue = "1", IsOnlyIgnoreInsert = false)]
+    [SugarColumn(DefaultValue = "1", IsOnlyIgnoreInsert = true)]
     public byte State { get; set; } = 1;
 
     // 用户名

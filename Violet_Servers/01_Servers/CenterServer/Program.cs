@@ -8,12 +8,11 @@ class Program
         NetServer server = new NetServer(null);
         server.StartServer(NetDefine.IPHost, NetDefine.CenterServerPort);
 
-        DBMgr.Instance.InitDB();
-
         SqlSugarClient db = DBMgr.Instance.InitDB();
         Center_LoginCtrl centerLoginCtrl = new Center_LoginCtrl(new LoginModel(db));
         server.RegistCommand(NetDefine.CMD_RegistCode, centerLoginCtrl);
         server.RegistCommand(NetDefine.CMD_LoginCode, centerLoginCtrl);
+        server.RegistCommand(NetDefine.CMD_GetServerListCode, centerLoginCtrl);
 
         while (true)
         {

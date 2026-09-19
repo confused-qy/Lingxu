@@ -29,6 +29,10 @@ public class Center_LoginCtrl : IContainer
                 // 处理登录命令
                 OnLoginHandle(serverBase, basePackage);
                 break;
+            case NetDefine.CMD_GetServerListCode:
+                // 处理获取服务器列表命令
+                OnGetServerListHandle(serverBase, basePackage);
+                break;
             default:
                 // 处理其他命令
                 break;
@@ -58,5 +62,15 @@ public class Center_LoginCtrl : IContainer
         LoginRet loginRet = _loginModel.LoginAccount(loginReq);
         LogMsg.Info($"Login result: " + loginRet.ToString());
         serverBase.SendData(basePackage, basePackage.ProtoCode, loginRet.ToByteString());
+    }
+
+    private void OnGetServerListHandle(ServerBase serverBase, BasePackage basePackage)
+    {
+        // 处理获取服务器列表命令的具体逻辑
+        GateServerListReq getServerListReq = GateServerListReq.Parser.ParseFrom(basePackage.Data);
+        LogMsg.Info($"Received get server list request: " + getServerListReq.ToString());
+        GateServerListRet getServerListRet = _loginModel.GetServerList(getServerListReq);
+        LogMsg.Info($"Get server list result: " + getServerListRet.ToString());
+        serverBase.SendData(basePackage, basePackage.ProtoCode, getServerListRet.ToByteString());
     }
 }

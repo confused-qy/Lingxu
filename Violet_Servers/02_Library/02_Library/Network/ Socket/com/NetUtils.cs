@@ -66,9 +66,9 @@ public class NetUtils : Singleton<NetUtils>
     // 解压缩数据
     public byte[] DeCompress(byte[] body)
     {
-        using (MemoryStream comStrem = new MemoryStream())
+        using (MemoryStream comStrem = new MemoryStream(body))
         {
-            using (GZipStream zipStrem = new GZipStream(comStrem, CompressionMode.Compress))
+            using (GZipStream zipStrem = new GZipStream(comStrem, CompressionMode.Decompress))
             {
                 using (var resultStream = new MemoryStream())
                 {

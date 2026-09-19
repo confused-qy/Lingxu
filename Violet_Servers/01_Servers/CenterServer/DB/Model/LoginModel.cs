@@ -45,7 +45,7 @@ public class LoginModel
         }
         return ret;
     }
-    
+
     internal RegistRet RegistAccount(RegistReq registReq)
     {
         ret.CmdCode = CmdCode.Succeed;
@@ -75,6 +75,37 @@ public class LoginModel
                 ret.CmdCode = CmdCode.ServerError; // 设置命令码为失败
             }
 
+        }
+        return ret;
+    }
+    
+    internal GateServerListRet GetServerList(GateServerListReq req)
+    {
+        GateServerListRet ret = new GateServerListRet();
+
+        if (req.ServerId == 0)
+        {
+            List<GameServerTable> gameServerTables = _db.Queryable<GameServerTable>().ToList();
+            if (gameServerTables != null && gameServerTables.Count > 0)
+            {
+                for (int i = 0; i < gameServerTables.Count; i++)
+                {
+                    GameServer gameServer = new GameServer()
+                    {
+                        ServerId = gameServerTables[i].Id,
+                        ServerName = gameServerTables[i].ServerName,
+                        RunState = gameServerTables[i].RunState,
+                        IsNew = gameServerTables[i].IsNew,
+                        IpHost = gameServerTables[i].IPHost,
+                        Port = gameServerTables[i].Port
+                    };
+                    ret.GameServers.Add(gameServer);
+                }
+            }
+            else
+            {
+                ret.CmdCode = CmdCode.ServerError; // 设置命令码为失败
+            }
         }
         return ret;
     }

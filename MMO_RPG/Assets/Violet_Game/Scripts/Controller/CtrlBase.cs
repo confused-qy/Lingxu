@@ -20,14 +20,14 @@ public class CtrlBase : IDisposable
         _view.Show(isShow);
     }
 
-    public virtual void ShowWindow(WindowType windowType)
+    public virtual void ShowWindow(WindowType windowType, object obj = null)
     {
         // 显示窗口
         if (!_view.gameObject.activeSelf)
         {
             _view.Show(true);
         }
-        _view.ShowWindow(windowType);
+        _view.ShowWindow(windowType, obj);
     }
 
 

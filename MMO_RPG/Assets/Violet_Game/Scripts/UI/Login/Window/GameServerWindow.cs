@@ -1,4 +1,6 @@
 using UnityEngine;
+using Protocol;
+using Google.Protobuf;
 /**
 * GameServerWindow.cs
 * DESCRIPTION: 游戏服务器窗口
@@ -9,7 +11,12 @@ public class GameServerWindow : WindowBase
     public void OnGotoServerListBtnClicked()
     {
         // TODO: 显示服务器列表窗口
-        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.ServerListWindow);
+        // UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.ServerListWindow);
+        GateServerListReq req = new GateServerListReq()
+        {
+            ServerId = 0 // 获取所有数据
+        };
+        NetSocketMgr.Client.SendData(NetDefine.CMD_GetServerListCode, req.ToByteString());
     }
 
     public void OnGameServerBtnClicked()

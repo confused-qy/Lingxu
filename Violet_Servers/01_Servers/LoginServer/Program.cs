@@ -16,9 +16,11 @@ class Program
         LoginCtrl loginCtrl = new LoginCtrl();
         server.RegistCommand(NetDefine.CMD_RegistCode, loginCtrl);
         server.RegistCommand(NetDefine.CMD_LoginCode, loginCtrl);
+        server.RegistCommand(NetDefine.CMD_GetServerListCode, loginCtrl);
 
         client.RegistCommand(NetDefine.CMD_RegistCode, loginCtrl);
         client.RegistCommand(NetDefine.CMD_LoginCode, loginCtrl);
+        client.RegistCommand(NetDefine.CMD_GetServerListCode, loginCtrl);
 
         // new Timer(_ =>
         // {
