@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System;
 
 /**
  * CreateRoleWindow.cs
@@ -10,15 +11,19 @@ public class CreateRoleWindow : WindowBase
 {
     [SerializeField, Header("昵称输入框")] private TMP_InputField _iptNickname;
 
+    public Action<string> CreateRoleBtnClickAction;
+
     public void OnCreateRoleBtnClicked()
     {
         // 判断输入框是否为空
+        if (string.IsNullOrEmpty(_iptNickname.text))
+        {
+            // 昵称为空，提示用户输入昵称
+            TipsMgr.Instance.ShowSystemTips("请输入昵称...");
+            return;
+        }
 
-        // 获取输入框的昵称合法性
-
-        // 服务器验证，是否创建成功
-
-        // 跳转选择角色的UI界面
-        UIRoot.Instance.CreateRoleViewCtrl.ShowWindow(WindowType.SelectRoleWindow);
+        // 调用外部注册的点击事件回调
+        CreateRoleBtnClickAction?.Invoke(_iptNickname.text);
     }
 }

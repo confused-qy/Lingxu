@@ -24,24 +24,33 @@ public static partial class ResultEntityReflection {
         string.Concat(
           "ChJSZXN1bHRFbnRpdHkucHJvdG8iIAoGRXJyTXNnEhYKBGNvZGUYASABKA4y",
           "CC5DbWRDb2RlIicKCVJlZ2lzdFJldBIaCghjbWRfY29kZRgBIAEoDjIILkNt",
-          "ZENvZGUiWAoITG9naW5SZXQSGgoIY21kX2NvZGUYASABKA4yCC5DbWRDb2Rl",
-          "EhwKFGxhc3RfbG9naW5fc2VydmVyX2lkGAIgASgFEhIKCmFjY291bnRfaWQY",
-          "AyABKAUidgoKR2FtZVNlcnZlchIRCglzZXJ2ZXJfaWQYASABKAUSEwoLc2Vy",
-          "dmVyX25hbWUYAiABKAkSEQoJcnVuX3N0YXRlGAMgASgFEg4KBmlzX25ldxgE",
-          "IAEoBRIPCgdpcF9ob3N0GAUgASgJEgwKBHBvcnQYBiABKAUiUgoRR2F0ZVNl",
-          "cnZlckxpc3RSZXQSGgoIY21kX2NvZGUYASABKA4yCC5DbWRDb2RlEiEKDGdh",
-          "bWVfc2VydmVycxgCIAMoCzILLkdhbWVTZXJ2ZXIqbAoHQ21kQ29kZRILCgdT",
-          "dWNjZWVkEAASDQoJQWNjdEV4aXN0EAESDwoLU2VydmVyRXJyb3IQAhIQCgxB",
-          "Y2N0Tm90RXhpc3QQAxIRCg1QYXNzd29yZEVycm9yEAQSDwoLQWNjdERpc2Fi",
-          "bGUQBWIGcHJvdG8z"));
+          "ZENvZGUiXAoITG9naW5SZXQSGgoIY21kX2NvZGUYASABKA4yCC5DbWRDb2Rl",
+          "EiAKC2dhbWVfc2VydmVyGAIgASgLMgsuR2FtZVNlcnZlchISCgphY2NvdW50",
+          "X2lkGAMgASgFInYKCkdhbWVTZXJ2ZXISEQoJc2VydmVyX2lkGAEgASgFEhMK",
+          "C3NlcnZlcl9uYW1lGAIgASgJEhEKCXJ1bl9zdGF0ZRgDIAEoBRIOCgZpc19u",
+          "ZXcYBCABKAUSDwoHaXBfaG9zdBgFIAEoCRIMCgRwb3J0GAYgASgFIlIKEUdh",
+          "dGVTZXJ2ZXJMaXN0UmV0EhoKCGNtZF9jb2RlGAEgASgOMgguQ21kQ29kZRIh",
+          "CgxnYW1lX3NlcnZlcnMYAiADKAsyCy5HYW1lU2VydmVyIloKEkxvZ2luR2Ft",
+          "ZVNlcnZlclJldBIaCghjbWRfY29kZRgBIAEoDjIILkNtZENvZGUSKAoQY3Jl",
+          "YXRlX3JvbGVfaW5mbxgCIAEoCzIOLkNyZWF0ZVJvbGVSZXQibQoNQ3JlYXRl",
+          "Um9sZVJldBIaCghjbWRfY29kZRgBIAEoDjIILkNtZENvZGUSDwoHcm9sZV9p",
+          "ZBgCIAEoBRIQCghuaWNrbmFtZRgDIAEoCRIOCgZqb2JfaWQYBCABKAUSDQoF",
+          "bGV2ZWwYBSABKAUq5QEKB0NtZENvZGUSCwoHU3VjY2VlZBAAEg0KCUFjY3RF",
+          "eGlzdBABEg8KC1NlcnZlckVycm9yEAISEAoMQWNjdE5vdEV4aXN0EAMSEQoN",
+          "UGFzc3dvcmRFcnJvchAEEg8KC0FjY3REaXNhYmxlEAUSEQoNUmVxUGFyYW1F",
+          "cnJvchAGEhEKDU5pY2tuYW1lRXhpc3QQBxITCg9Vc2VyTmFtZUlsbGVnYWwQ",
+          "CBITCg9QaG9uZU51bUlsbGVnYWwQCRITCg9QYXNzd29yZElsbGVnYWwQChIS",
+          "Cg5Vc2VyT2Z0ZW5Mb2dpbhALYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CmdCode), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::ErrMsg), global::ErrMsg.Parser, new[]{ "Code" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RegistRet), global::RegistRet.Parser, new[]{ "CmdCode" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginRet), global::LoginRet.Parser, new[]{ "CmdCode", "LastLoginServerId", "AccountId" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginRet), global::LoginRet.Parser, new[]{ "CmdCode", "GameServer", "AccountId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GameServer), global::GameServer.Parser, new[]{ "ServerId", "ServerName", "RunState", "IsNew", "IpHost", "Port" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GateServerListRet), global::GateServerListRet.Parser, new[]{ "CmdCode", "GameServers" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::GateServerListRet), global::GateServerListRet.Parser, new[]{ "CmdCode", "GameServers" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginGameServerRet), global::LoginGameServerRet.Parser, new[]{ "CmdCode", "CreateRoleInfo" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::CreateRoleRet), global::CreateRoleRet.Parser, new[]{ "CmdCode", "RoleId", "Nickname", "JobId", "Level" }, null, null, null, null)
         }));
   }
   #endregion
@@ -73,6 +82,30 @@ public enum CmdCode {
   /// 账号被禁用
   /// </summary>
   [pbr::OriginalName("AcctDisable")] AcctDisable = 5,
+  /// <summary>
+  /// 请求参数错误
+  /// </summary>
+  [pbr::OriginalName("ReqParamError")] ReqParamError = 6,
+  /// <summary>
+  /// 角色昵称已存在
+  /// </summary>
+  [pbr::OriginalName("NicknameExist")] NicknameExist = 7,
+  /// <summary>
+  /// 用户名不合法
+  /// </summary>
+  [pbr::OriginalName("UserNameIllegal")] UserNameIllegal = 8,
+  /// <summary>
+  /// 手机号不合法
+  /// </summary>
+  [pbr::OriginalName("PhoneNumIllegal")] PhoneNumIllegal = 9,
+  /// <summary>
+  /// 密码不合法
+  /// </summary>
+  [pbr::OriginalName("PasswordIllegal")] PasswordIllegal = 10,
+  /// <summary>
+  /// 用户频繁登录
+  /// </summary>
+  [pbr::OriginalName("UserOftenLogin")] UserOftenLogin = 11,
 }
 
 #endregion
@@ -516,7 +549,7 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public LoginRet(LoginRet other) : this() {
     cmdCode_ = other.cmdCode_;
-    lastLoginServerId_ = other.lastLoginServerId_;
+    gameServer_ = other.gameServer_ != null ? other.gameServer_.Clone() : null;
     accountId_ = other.accountId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -542,18 +575,18 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
     }
   }
 
-  /// <summary>Field number for the "last_login_server_id" field.</summary>
-  public const int LastLoginServerIdFieldNumber = 2;
-  private int lastLoginServerId_;
+  /// <summary>Field number for the "game_server" field.</summary>
+  public const int GameServerFieldNumber = 2;
+  private global::GameServer gameServer_;
   /// <summary>
   /// 上次登录的服务器ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int LastLoginServerId {
-    get { return lastLoginServerId_; }
+  public global::GameServer GameServer {
+    get { return gameServer_; }
     set {
-      lastLoginServerId_ = value;
+      gameServer_ = value;
     }
   }
 
@@ -588,7 +621,7 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
       return true;
     }
     if (CmdCode != other.CmdCode) return false;
-    if (LastLoginServerId != other.LastLoginServerId) return false;
+    if (!object.Equals(GameServer, other.GameServer)) return false;
     if (AccountId != other.AccountId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -598,7 +631,7 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
   public override int GetHashCode() {
     int hash = 1;
     if (CmdCode != global::CmdCode.Succeed) hash ^= CmdCode.GetHashCode();
-    if (LastLoginServerId != 0) hash ^= LastLoginServerId.GetHashCode();
+    if (gameServer_ != null) hash ^= GameServer.GetHashCode();
     if (AccountId != 0) hash ^= AccountId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -622,9 +655,9 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
       output.WriteRawTag(8);
       output.WriteEnum((int) CmdCode);
     }
-    if (LastLoginServerId != 0) {
-      output.WriteRawTag(16);
-      output.WriteInt32(LastLoginServerId);
+    if (gameServer_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(GameServer);
     }
     if (AccountId != 0) {
       output.WriteRawTag(24);
@@ -644,9 +677,9 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
       output.WriteRawTag(8);
       output.WriteEnum((int) CmdCode);
     }
-    if (LastLoginServerId != 0) {
-      output.WriteRawTag(16);
-      output.WriteInt32(LastLoginServerId);
+    if (gameServer_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(GameServer);
     }
     if (AccountId != 0) {
       output.WriteRawTag(24);
@@ -665,8 +698,8 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
     if (CmdCode != global::CmdCode.Succeed) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdCode);
     }
-    if (LastLoginServerId != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(LastLoginServerId);
+    if (gameServer_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameServer);
     }
     if (AccountId != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(AccountId);
@@ -686,8 +719,11 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
     if (other.CmdCode != global::CmdCode.Succeed) {
       CmdCode = other.CmdCode;
     }
-    if (other.LastLoginServerId != 0) {
-      LastLoginServerId = other.LastLoginServerId;
+    if (other.gameServer_ != null) {
+      if (gameServer_ == null) {
+        GameServer = new global::GameServer();
+      }
+      GameServer.MergeFrom(other.GameServer);
     }
     if (other.AccountId != 0) {
       AccountId = other.AccountId;
@@ -715,8 +751,11 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
           CmdCode = (global::CmdCode) input.ReadEnum();
           break;
         }
-        case 16: {
-          LastLoginServerId = input.ReadInt32();
+        case 18: {
+          if (gameServer_ == null) {
+            GameServer = new global::GameServer();
+          }
+          input.ReadMessage(GameServer);
           break;
         }
         case 24: {
@@ -746,8 +785,11 @@ public sealed partial class LoginRet : pb::IMessage<LoginRet>
           CmdCode = (global::CmdCode) input.ReadEnum();
           break;
         }
-        case 16: {
-          LastLoginServerId = input.ReadInt32();
+        case 18: {
+          if (gameServer_ == null) {
+            GameServer = new global::GameServer();
+          }
+          input.ReadMessage(GameServer);
           break;
         }
         case 24: {
@@ -1383,6 +1425,620 @@ public sealed partial class GateServerListRet : pb::IMessage<GateServerListRet>
         }
         case 18: {
           gameServers_.AddEntriesFrom(ref input, _repeated_gameServers_codec);
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+/// <summary>
+/// 登录游戏服务器返回
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class LoginGameServerRet : pb::IMessage<LoginGameServerRet>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<LoginGameServerRet> _parser = new pb::MessageParser<LoginGameServerRet>(() => new LoginGameServerRet());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<LoginGameServerRet> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ResultEntityReflection.Descriptor.MessageTypes[5]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginGameServerRet() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginGameServerRet(LoginGameServerRet other) : this() {
+    cmdCode_ = other.cmdCode_;
+    createRoleInfo_ = other.createRoleInfo_ != null ? other.createRoleInfo_.Clone() : null;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public LoginGameServerRet Clone() {
+    return new LoginGameServerRet(this);
+  }
+
+  /// <summary>Field number for the "cmd_code" field.</summary>
+  public const int CmdCodeFieldNumber = 1;
+  private global::CmdCode cmdCode_ = global::CmdCode.Succeed;
+  /// <summary>
+  /// 表示登录游戏服务器结果的状态码
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::CmdCode CmdCode {
+    get { return cmdCode_; }
+    set {
+      cmdCode_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "create_role_info" field.</summary>
+  public const int CreateRoleInfoFieldNumber = 2;
+  private global::CreateRoleRet createRoleInfo_;
+  /// <summary>
+  /// 创建角色的返回信息
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::CreateRoleRet CreateRoleInfo {
+    get { return createRoleInfo_; }
+    set {
+      createRoleInfo_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as LoginGameServerRet);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(LoginGameServerRet other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (CmdCode != other.CmdCode) return false;
+    if (!object.Equals(CreateRoleInfo, other.CreateRoleInfo)) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (CmdCode != global::CmdCode.Succeed) hash ^= CmdCode.GetHashCode();
+    if (createRoleInfo_ != null) hash ^= CreateRoleInfo.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (createRoleInfo_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(CreateRoleInfo);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (createRoleInfo_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(CreateRoleInfo);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (CmdCode != global::CmdCode.Succeed) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdCode);
+    }
+    if (createRoleInfo_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreateRoleInfo);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(LoginGameServerRet other) {
+    if (other == null) {
+      return;
+    }
+    if (other.CmdCode != global::CmdCode.Succeed) {
+      CmdCode = other.CmdCode;
+    }
+    if (other.createRoleInfo_ != null) {
+      if (createRoleInfo_ == null) {
+        CreateRoleInfo = new global::CreateRoleRet();
+      }
+      CreateRoleInfo.MergeFrom(other.CreateRoleInfo);
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 18: {
+          if (createRoleInfo_ == null) {
+            CreateRoleInfo = new global::CreateRoleRet();
+          }
+          input.ReadMessage(CreateRoleInfo);
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 18: {
+          if (createRoleInfo_ == null) {
+            CreateRoleInfo = new global::CreateRoleRet();
+          }
+          input.ReadMessage(CreateRoleInfo);
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class CreateRoleRet : pb::IMessage<CreateRoleRet>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<CreateRoleRet> _parser = new pb::MessageParser<CreateRoleRet>(() => new CreateRoleRet());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<CreateRoleRet> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ResultEntityReflection.Descriptor.MessageTypes[6]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public CreateRoleRet() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public CreateRoleRet(CreateRoleRet other) : this() {
+    cmdCode_ = other.cmdCode_;
+    roleId_ = other.roleId_;
+    nickname_ = other.nickname_;
+    jobId_ = other.jobId_;
+    level_ = other.level_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public CreateRoleRet Clone() {
+    return new CreateRoleRet(this);
+  }
+
+  /// <summary>Field number for the "cmd_code" field.</summary>
+  public const int CmdCodeFieldNumber = 1;
+  private global::CmdCode cmdCode_ = global::CmdCode.Succeed;
+  /// <summary>
+  /// 表示创建角色结果的状态码
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::CmdCode CmdCode {
+    get { return cmdCode_; }
+    set {
+      cmdCode_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "role_id" field.</summary>
+  public const int RoleIdFieldNumber = 2;
+  private int roleId_;
+  /// <summary>
+  /// 角色ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int RoleId {
+    get { return roleId_; }
+    set {
+      roleId_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "nickname" field.</summary>
+  public const int NicknameFieldNumber = 3;
+  private string nickname_ = "";
+  /// <summary>
+  /// 角色昵称
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string Nickname {
+    get { return nickname_; }
+    set {
+      nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "job_id" field.</summary>
+  public const int JobIdFieldNumber = 4;
+  private int jobId_;
+  /// <summary>
+  /// 角色职业ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int JobId {
+    get { return jobId_; }
+    set {
+      jobId_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "level" field.</summary>
+  public const int LevelFieldNumber = 5;
+  private int level_;
+  /// <summary>
+  /// 角色等级
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Level {
+    get { return level_; }
+    set {
+      level_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as CreateRoleRet);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(CreateRoleRet other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (CmdCode != other.CmdCode) return false;
+    if (RoleId != other.RoleId) return false;
+    if (Nickname != other.Nickname) return false;
+    if (JobId != other.JobId) return false;
+    if (Level != other.Level) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (CmdCode != global::CmdCode.Succeed) hash ^= CmdCode.GetHashCode();
+    if (RoleId != 0) hash ^= RoleId.GetHashCode();
+    if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
+    if (JobId != 0) hash ^= JobId.GetHashCode();
+    if (Level != 0) hash ^= Level.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (RoleId != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(RoleId);
+    }
+    if (Nickname.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(Nickname);
+    }
+    if (JobId != 0) {
+      output.WriteRawTag(32);
+      output.WriteInt32(JobId);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(40);
+      output.WriteInt32(Level);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (CmdCode != global::CmdCode.Succeed) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CmdCode);
+    }
+    if (RoleId != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(RoleId);
+    }
+    if (Nickname.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(Nickname);
+    }
+    if (JobId != 0) {
+      output.WriteRawTag(32);
+      output.WriteInt32(JobId);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(40);
+      output.WriteInt32(Level);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (CmdCode != global::CmdCode.Succeed) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdCode);
+    }
+    if (RoleId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoleId);
+    }
+    if (Nickname.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
+    }
+    if (JobId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(JobId);
+    }
+    if (Level != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(CreateRoleRet other) {
+    if (other == null) {
+      return;
+    }
+    if (other.CmdCode != global::CmdCode.Succeed) {
+      CmdCode = other.CmdCode;
+    }
+    if (other.RoleId != 0) {
+      RoleId = other.RoleId;
+    }
+    if (other.Nickname.Length != 0) {
+      Nickname = other.Nickname;
+    }
+    if (other.JobId != 0) {
+      JobId = other.JobId;
+    }
+    if (other.Level != 0) {
+      Level = other.Level;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          RoleId = input.ReadInt32();
+          break;
+        }
+        case 26: {
+          Nickname = input.ReadString();
+          break;
+        }
+        case 32: {
+          JobId = input.ReadInt32();
+          break;
+        }
+        case 40: {
+          Level = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          CmdCode = (global::CmdCode) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          RoleId = input.ReadInt32();
+          break;
+        }
+        case 26: {
+          Nickname = input.ReadString();
+          break;
+        }
+        case 32: {
+          JobId = input.ReadInt32();
+          break;
+        }
+        case 40: {
+          Level = input.ReadInt32();
           break;
         }
       }

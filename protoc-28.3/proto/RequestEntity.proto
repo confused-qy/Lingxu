@@ -27,3 +27,17 @@ message LoginReq {
 message GateServerListReq {
   int32 server_id = 1; // 服务器ID
 }
+
+// 登录游戏服务器请求
+message LoginGameServerReq {
+  int32 account_id = 1; // 账号ID
+  int32 game_server_id = 2; // 游戏服务器ID
+}
+
+// 创建角色请求
+message CreateRoleReq {
+  int32 account_id = 1; // 账号ID
+  int32 game_server_id = 2; // 所属的游戏服务器ID
+  string nickname = 3; // 昵称
+  int32 job_id = 4; // 职业ID
+}

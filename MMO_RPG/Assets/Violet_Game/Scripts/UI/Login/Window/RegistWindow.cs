@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using Protocol;
-using Google.Protobuf;
+using System;
 /**
 * 注册窗口
 * DESCRIPTION: 注册窗口，继承自UIBase，封装了UIBase的生命周期函数
@@ -15,6 +13,10 @@ public class RegistWindow : WindowBase
     [SerializeField, Header("验证码输入框")] private TMP_InputField _iptVerify;
     [SerializeField, Header("密码输入框")] private TMP_InputField _iptPasd;
     [SerializeField, Header("确认密码输入框")] private TMP_InputField _iptSurePasd;
+
+    public Action<string, string, string> RegistBtnClickAction;
+    public Action<string> VerifyBtnClickAction;
+    public Action BackBtnClickAction;
 
     public void OnRegistBtnClicked()
     {
@@ -62,32 +64,18 @@ public class RegistWindow : WindowBase
             return;
         }
 
-        // 3. 开始注册
-        // TODO
-        // Debug.Log("注册成功");
-        // Show(false);
-
-        RegistReq req = new RegistReq
-        {
-            UserName = _iptAcct.text,
-            PhoneNum = _iptMobile.text,
-            Password = _iptPasd.text
-        };
-        
-        NetSocketMgr.Client.SendData(NetDefine.CMD_RegistCode, req.ToByteString());
-
+        RegistBtnClickAction?.Invoke(_iptAcct.text, _iptMobile.text, _iptPasd.text);
     }
 
     public void OnVerifyBtnClicked()
     {
-        // TODO
-        Debug.Log("发送验证码成功");
+        VerifyBtnClickAction?.Invoke(_iptMobile.text);
     }
 
     public void OnBackBtnClicked()
     {
-        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.LoginWindow);
+        BackBtnClickAction?.Invoke();
     }
-    
+
 
 }

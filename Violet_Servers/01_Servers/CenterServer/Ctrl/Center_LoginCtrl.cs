@@ -33,6 +33,14 @@ public class Center_LoginCtrl : IContainer
                 // 处理获取服务器列表命令
                 OnGetServerListHandle(serverBase, basePackage);
                 break;
+            case NetDefine.CMD_LoginGameServerCode:
+                // 处理登录游戏服务器命令
+                OnLoginGameServerHandle(serverBase, basePackage);
+                break;
+            case NetDefine.CMD_CreateRoleCode:
+                // 处理创建角色命令
+                OnCreateRoleHandle(serverBase, basePackage);
+                break;
             default:
                 // 处理其他命令
                 break;
@@ -72,5 +80,25 @@ public class Center_LoginCtrl : IContainer
         GateServerListRet getServerListRet = _loginModel.GetServerList(getServerListReq);
         LogMsg.Info($"Get server list result: " + getServerListRet.ToString());
         serverBase.SendData(basePackage, basePackage.ProtoCode, getServerListRet.ToByteString());
+    }
+    
+    private void OnLoginGameServerHandle(ServerBase serverBase, BasePackage basePackage)
+    {
+        // 处理登录游戏服务器命令的具体逻辑
+        LoginGameServerReq loginGameServerReq = LoginGameServerReq.Parser.ParseFrom(basePackage.Data);
+        LogMsg.Info($"Received login game server request: " + loginGameServerReq.ToString());
+        LoginGameServerRet loginGameServerRet = _loginModel.LoginGameServer(loginGameServerReq);
+        LogMsg.Info($"Login game server result: " + loginGameServerRet.ToString());
+        serverBase.SendData(basePackage, basePackage.ProtoCode, loginGameServerRet.ToByteString());
+    }
+    
+    private void OnCreateRoleHandle(ServerBase serverBase, BasePackage basePackage)
+    {
+        // 处理创建角色命令的具体逻辑
+        CreateRoleReq createRoleReq = CreateRoleReq.Parser.ParseFrom(basePackage.Data);
+        LogMsg.Info($"Received create role request: " + createRoleReq.ToString());
+        CreateRoleRet createRoleRet = _loginModel.CreateRole(createRoleReq);
+        LogMsg.Info($"Create role result: " + createRoleRet.ToString());
+        serverBase.SendData(basePackage, basePackage.ProtoCode, createRoleRet.ToByteString());
     }
 }

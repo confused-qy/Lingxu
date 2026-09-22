@@ -13,6 +13,8 @@ class Program
         server.RegistCommand(NetDefine.CMD_RegistCode, centerLoginCtrl);
         server.RegistCommand(NetDefine.CMD_LoginCode, centerLoginCtrl);
         server.RegistCommand(NetDefine.CMD_GetServerListCode, centerLoginCtrl);
+        server.RegistCommand(NetDefine.CMD_LoginGameServerCode, centerLoginCtrl);
+        server.RegistCommand(NetDefine.CMD_CreateRoleCode, centerLoginCtrl);
 
         while (true)
         {

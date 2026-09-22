@@ -14,7 +14,8 @@ internal class DBMgr : Singleton<DBMgr>
         db.DbMaintenance.CreateDatabase(); // 创建数据库（如果不存在）
 
         // 创建表（如果不存在）
-        db.CodeFirst.InitTables(typeof(AccountTable), typeof(GameServerTable));
+        db.CodeFirst.InitTables(typeof(AccountTable), typeof(GameServerTable), typeof(RoleTable));
+        
 
         // for (int i = 0; i < 30; i++)
         // {

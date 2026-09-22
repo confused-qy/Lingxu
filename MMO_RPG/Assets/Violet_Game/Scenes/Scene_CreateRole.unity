@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Effect_Skill4
       objectReference: {fileID: 0}
+    - target: {fileID: 3391158376525424131, guid: 89867dc74b88c904c93352af911c13d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

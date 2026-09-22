@@ -18,6 +18,7 @@ public class NetSocketMgr : Singleton<NetSocketMgr>
         synchronizationContext = SynchronizationContext.Current;
         // 初始化并连接到服务器
         ConnectServer(NetDefine.IPHost, NetDefine.LoginServerPort);
+        NetErrorMsgMgr.Instance.Init();
     }
 
     public void ConnectServer(string host, int port)

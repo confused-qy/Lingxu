@@ -1061,7 +1061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 360, y: 0}
+  m_AnchoredPosition: {x: 360, y: 300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &354960648
@@ -1217,7 +1217,7 @@ GameObject:
   - component: {fileID: 369690467}
   - component: {fileID: 369690466}
   m_Layer: 5
-  m_Name: Button
+  m_Name: btn_confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1286,7 +1286,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 369690467}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 584486967}
+        m_TargetAssemblyTypeName: ServerListWindow, Violet_Game
+        m_MethodName: OnConfirmBtnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &369690467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3705,7 +3717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1093486927
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5084,7 +5096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1438770440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5554,7 +5566,7 @@ GameObject:
   - component: {fileID: 1533630661}
   - component: {fileID: 1533630660}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: tex_servername
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7130,7 +7142,7 @@ GameObject:
   - component: {fileID: 2016125616}
   - component: {fileID: 2016125615}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: tex_state
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7579,6 +7591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c64fc6b33d4846c092e085727b47a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameServerWindow
+  _texRunState: {fileID: 2016125615}
+  _texServerName: {fileID: 1044150112}
 --- !u!1 &2126268527
 GameObject:
   m_ObjectHideFlags: 0

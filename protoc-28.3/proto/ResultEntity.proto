@@ -7,6 +7,12 @@ enum CmdCode {
     AcctNotExist = 3; // 账号不存在
     PasswordError = 4; // 密码错误
     AcctDisable = 5; // 账号被禁用
+    ReqParamError = 6; // 请求参数错误
+    NicknameExist = 7; // 角色昵称已存在
+    UserNameIllegal = 8; // 用户名不合法
+    PhoneNumIllegal = 9; // 手机号不合法
+    PasswordIllegal = 10; // 密码不合法
+    UserOftenLogin = 11; // 用户频繁登录
 }
 
 message ErrMsg{
@@ -19,7 +25,7 @@ message RegistRet {
 
 message LoginRet {
     CmdCode cmd_code = 1; // 表示登录结果的状态码
-    int32 last_login_server_id = 2; // 上次登录的服务器ID
+    GameServer game_server = 2; // 上次登录的服务器ID
     int32 account_id = 3; // 账号ID
 }
 
@@ -35,4 +41,18 @@ message GameServer {
 message GateServerListRet {
     CmdCode cmd_code = 1; // 表示获取网关服务器列表结果的状态码
     repeated GameServer game_servers = 2; // 网关服务器列表
+}
+
+// 登录游戏服务器返回
+message LoginGameServerRet {
+    CmdCode cmd_code = 1; // 表示登录游戏服务器结果的状态码
+    CreateRoleRet create_role_info = 2; // 创建角色的返回信息
+}
+
+message CreateRoleRet {
+    CmdCode cmd_code = 1; // 表示创建角色结果的状态码
+    int32 role_id = 2; // 角色ID
+    string nickname = 3; // 角色昵称
+    int32 job_id = 4; // 角色职业ID
+    int32 level = 5; // 角色等级
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Protocol;
-using Google.Protobuf;
+using System;
 
 /**
 * LoginWindow.cs
@@ -16,28 +15,20 @@ public class LoginWindow : WindowBase
     [SerializeField, Header("密码输入框")]private TMP_InputField _iptPasd;
     [SerializeField, Header("记住账号")]private Toggle _togRememberAcct;
     [SerializeField, Header("用户协议")] private Toggle _todAgreement;
-    
-    private void Awake()
-    {
-        // 1. 判断本地是否保存了账号，如果有，则显示在输入框中
-        string acct = PlayerPrefs.GetString("Account", "");
-        if (!string.IsNullOrEmpty(acct))
-        {
-            _iptAcct.text = acct;
-            _togRememberAcct.isOn = true;
-        }
 
-        // 2. 判断本地是否保存了用户协议，如果有，则勾选
-        int agreement = PlayerPrefs.GetInt("Agreement", 0);
-        if (agreement == 1)
-        {
-            _todAgreement.isOn = true;
-        }
+    public Action<string, string, bool> LoginBtnClickAction;
+    public Action GotoRegistBtnClickAction;
+
+    public void SetRememberedLogin(string account, bool agreement)
+    {
+        _iptAcct.text = account;
+        _togRememberAcct.isOn = !string.IsNullOrEmpty(account);
+        _todAgreement.isOn = agreement;
     }
 
     public void OoGotoRegistBtnClicked()
     {
-        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.RegisterWindow);
+        GotoRegistBtnClickAction?.Invoke();
     }
 
     public void OnLoginBtnClicked()
@@ -57,7 +48,7 @@ public class LoginWindow : WindowBase
             return;
         }
 
-        // 2. 判断是否勾选了用户协议，如果有勾选，则保存在本地
+        // 2. 检查用户协议；通过校验后，把输入交给控制器
         if (!_todAgreement.isOn)
         {
             Debug.Log("请勾选用户协议");
@@ -65,27 +56,6 @@ public class LoginWindow : WindowBase
             return;
         }
 
-        PlayerPrefs.SetInt("Agreement", 1);
-
-        // 3. 判断是否勾选了记住账号，如果有勾选，则保存在本地
-        if (_togRememberAcct.isOn)
-        {
-            PlayerPrefs.SetString("Account", _iptAcct.text);
-        }
-        else
-        {
-            PlayerPrefs.SetString("Account", "");
-        }
-
-        // PlayerPrefs: Unity提供的一个简单的本地存储系统，可以用来保存一些简单的数据，比如玩家的设置，游戏进度等。它会将数据保存在本地的注册表或者配置文件中，数据类型包括int、float、string等。
-
-        // 4. 服务器验证，只有服务器验证通过了才可以登录
-        LoginReq req = new LoginReq()
-        {
-            UserName = _iptAcct.text,
-            Password = _iptPasd.text
-        };
-
-        NetSocketMgr.Client.SendData(NetDefine.CMD_LoginCode, req.ToByteString());
+        LoginBtnClickAction?.Invoke(_iptAcct.text, _iptPasd.text, _togRememberAcct.isOn);
     }
 }

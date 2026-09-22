@@ -13,6 +13,10 @@ public class NetDefine
     public const ushort CMD_LoginCode = 11020; // 登录码
 
     public const ushort CMD_GetServerListCode = 11030; // 获取服务器列表码
+
+    public const ushort CMD_LoginGameServerCode = 11040; // 登录游戏服务器码
+
+    public const ushort CMD_CreateRoleCode = 11050; // 创建角色码
 }
 
 public enum ConnState

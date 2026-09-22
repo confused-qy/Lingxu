@@ -1,6 +1,6 @@
 using UnityEngine;
-using Protocol;
-using Google.Protobuf;
+using TMPro;
+using System;
 /**
 * GameServerWindow.cs
 * DESCRIPTION: 游戏服务器窗口
@@ -8,31 +8,55 @@ using Google.Protobuf;
 
 public class GameServerWindow : WindowBase
 {
+    [SerializeField, Header("服务器状态")]private TMP_Text _texRunState;
+    [SerializeField, Header("服务器名称")] private TMP_Text _texServerName;
+
+    GameServer _gameServer;
+
+    public override void RefreshUI(object obj)
+    {
+        _gameServer = obj as GameServer;
+        if (_gameServer != null)
+        {
+            Color color = Color.white;
+            string runState = "";
+            if (_gameServer.RunState == 1)
+            {
+                color = Color.red;
+                runState = "爆满";
+            }
+            else if (_gameServer.RunState == 2)
+            {
+                color = Color.yellow;
+                runState = "拥挤";
+            }
+            else if (_gameServer.RunState == 3)
+            {
+                color = Color.green;
+                runState = "正常";
+            }
+            _texRunState.color = color;
+            _texRunState.SetText(runState);
+
+            string str = "";
+            if (_gameServer.IsNew == 1)
+            {
+                str = "(新服)";
+            }
+            _texServerName.SetText(_gameServer.ServerName + str);
+        }
+    }
+
+    public Action GotoServerListBtnClickAction;
+    public Action<GameServer> GameServerBtnClickAction;
+
     public void OnGotoServerListBtnClicked()
     {
-        // TODO: 显示服务器列表窗口
-        // UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.ServerListWindow);
-        GateServerListReq req = new GateServerListReq()
-        {
-            ServerId = 0 // 获取所有数据
-        };
-        NetSocketMgr.Client.SendData(NetDefine.CMD_GetServerListCode, req.ToByteString());
+        GotoServerListBtnClickAction?.Invoke();
     }
 
     public void OnGameServerBtnClicked()
     {
-        // 服务器请求登录服务器
-
-        // 打开Scene_CreateRole场景
-        Global.Instance.YooPackage.LoadSceneAsync("Assets/Violet_Game/Scenes/Scene_CreateRole")
-            .Completed += handle =>
-            {
-                UIRoot.Instance.LoginViewCtrl.ShowView(false);
-                // 1. 是否已经有角色，有角色，跳转选择角色的UI
-
-                // 2. 如果还未创建角色，跳转创建角色的UI
-                UIRoot.Instance.CreateRoleViewCtrl.ShowWindow(WindowType.CreateRoleWindow);
-            };
-
+        GameServerBtnClickAction?.Invoke(_gameServer);
     }
 }

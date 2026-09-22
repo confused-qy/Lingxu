@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEditor.VersionControl;
+using System;
 using YooAsset;
 using Google.Protobuf.Collections;
 using System.Linq;
@@ -16,6 +16,14 @@ public class ServerListWindow : WindowBase
     [SerializeField, Header("Item父级变换")] private Transform _itemParentTrans;
 
     private RepeatedField<GameServer> _gameServers;
+    public Action CloseBtnClickAction;
+    public Action<GameServer> ConfirmBtnClickAction;
+
+    public void SetSelectedServer(GameServer gameServer)
+    {
+        _gameServer = gameServer;
+        SetServerName(gameServer?.ServerName ?? "");
+    }
 
     public override void RefreshUI(object obj)
     {
@@ -30,6 +38,11 @@ public class ServerListWindow : WindowBase
             _gameServers = ret.GameServers;
             GenerateServerListItem();
         }
+    }
+
+    private void SetServerName(string serverName)
+    {
+        _txtServerName.SetText(serverName);
     }
 
     // 生成服务器列表项
@@ -48,6 +61,8 @@ public class ServerListWindow : WindowBase
                 if (item != null)
                 {
                     item.RefreshUI(_gameServers[i]);
+                    item.OnItemClickedCB = OnItemClicked;
+                    item.OnItemConfirmedCB = OnItemConfirmed;
                 }
         }
     }
@@ -55,6 +70,23 @@ public class ServerListWindow : WindowBase
     public void OnCloseBtnClicked()
     {
         // 关闭服务器列表窗口
-        UIRoot.Instance.LoginViewCtrl.ShowWindow(WindowType.GameServerWindow);
+        CloseBtnClickAction?.Invoke();
+    }
+
+    private GameServer _gameServer;
+    private void OnItemClicked(GameServer gameServer)
+    {
+        SetSelectedServer(gameServer);
+    }
+
+    private void OnItemConfirmed(GameServer gameServer)
+    {
+        ConfirmBtnClickAction?.Invoke(gameServer);
+    }
+
+    public void OnConfirmBtnClicked()
+    {
+        // 确认选择的服务器
+        ConfirmBtnClickAction?.Invoke(_gameServer);
     }
 }

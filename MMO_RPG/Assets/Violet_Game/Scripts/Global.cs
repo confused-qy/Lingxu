@@ -7,6 +7,7 @@ public class Global : MonoBehaviour
     public static Global Instance { get; private set; }
     private ResourcePackage _package;
     public ResourcePackage YooPackage => _package;
+    public LoginRet LoginInfo { get; set; } // 保存登录信息
     private void Awake()
     {
         Instance = this;
