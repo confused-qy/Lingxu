@@ -67,10 +67,11 @@ public class DataUtils : Singleton<DataUtils>
     /// <param name="time"></param>
     public void AddLoginMilliseconds(string username, long milliseconds)
     {
-        if (!_loginTimeDic.ContainsKey(username))
-        {
-            _loginTimeDic.Add(username, milliseconds);
-        }
+        // if (!_loginTimeDic.ContainsKey(username))
+        // {
+        //     _loginTimeDic.Add(username, milliseconds);
+        // }
+        _loginTimeDic[username] = milliseconds; // 不管有没有登录过，直接更新登录时间
     }
 
     public long GetLoginMilliseconds(string username)
