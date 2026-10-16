@@ -14,10 +14,7 @@ Integrated **HybridCLR + YooAsset** to check resource versions, update manifests
 Version Check → Manifest Update → Asset Download → AOT Metadata → Assembly Loading → Login Scene
 ```
 
-<!-- Screenshot 1: The update screen during a download, showing progress and download details.
-Save as docs/images/hot-update.png, then move the following line outside this comment:
 ![Code and asset update progress](docs/images/hot-update.png)
--->
 
 ### Login, Server Selection & Characters
 
@@ -26,10 +23,7 @@ Save as docs/images/hot-update.png, then move the following line outside this co
 - **Character flow:** Opens character creation or selection based on existing character data, with nickname input and persistent character records.
 - **UI separation:** Windows handle input and presentation, Views bind callbacks, and Controllers manage requests, application state, and UI transitions.
 
-<!-- Screenshot 2: The login screen, optionally paired with the registration screen.
-Save as docs/images/login-register.png, then move the following line outside this comment:
 ![Login and registration](docs/images/login-register.png)
--->
 
 <!-- Screenshot 3: The server list, showing server status and the current selection.
 Save as docs/images/server-list.png, then move the following line outside this comment:
