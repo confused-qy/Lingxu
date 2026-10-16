@@ -234,4 +234,17 @@ public class Document {
 
     #endregion  
 
+    #region Cinemachine简介
+    /**
+     * Cinemachine：是Unity的高级摄像机系统，提供了强大的摄像机控制和动画功能。
+     *
+     * 功能和优势：
+     *      1、动态摄像机控制：支持跟随、轨迹、自由移动等多种摄像机行为。
+     *      2、易于使用：通过可视化编辑器和组件化设计，简化摄像机设置。
+     *      3、与Timeline集成：支持与Unity Timeline无缝集成，实现复杂的摄像机动画。
+     *      4、高度可定制：提供丰富的参数和事件，满足不同项目需求。
+     *
+     */
+    #endregion
+
 }
